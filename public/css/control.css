@@ -1,0 +1,134 @@
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+section#player {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 90vh;
+  display: none;
+}
+
+section#player .contener {
+  padding: 30px;
+  border-radius: 6px;
+  background: #aaa;
+  -webkit-box-shadow: -4px 4px 10px #0004;
+          box-shadow: -4px 4px 10px #0004;
+}
+
+section#player #cover {
+  width: 200px;
+  height: auto;
+  border-radius: 3px;
+}
+
+section#player .songname {
+  margin: 10px 0;
+}
+
+section#player input[type='range'] {
+  cursor: pointer;
+  width: 200px;
+  margin: 10px 0;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: #ddd;
+  position: relative;
+  --parsentis: 0%;
+}
+
+section#player input[type='range']::after {
+  content: "";
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  width: var(--parsentis);
+  height: 4px;
+  background: #fe624b;
+}
+
+section#player input[type='range']:focus {
+  outline: none;
+  border: none;
+}
+
+section#player input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #fe624b;
+}
+
+section#player .timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section#player .timer p {
+  font-size: 12px;
+}
+
+section#player .control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section#player .controls {
+  cursor: pointer;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  mix-blend-mode: darken;
+}
+
+section#connection {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 90vh;
+}
+
+section#connection h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+
+section#connection input#idno {
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  display: block;
+  background: #de6b44;
+  -webkit-box-shadow: inset 2px 3px 10px #403020a4;
+          box-shadow: inset 2px 3px 10px #403020a4;
+  color: #fff;
+  letter-spacing: 4px;
+}
+/*# sourceMappingURL=control.css.map */

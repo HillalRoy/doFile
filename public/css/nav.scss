@@ -1,0 +1,131 @@
+@mixin mobail {
+    @media (max-width: 768px) {
+        @content
+    }
+}
+.padding {
+    padding: 0 70px;
+    display: flex;
+
+    @include mobail{
+        padding: 10px;
+    }
+}
+
+nav {
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 5px 10px #3334;
+
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    @include mobail{
+        display: flex;
+        align-items: center;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+
+        @include mobail{
+            display: block;
+            position: absolute;
+            background: #fff;
+            height: 100vh;
+            top: 0;
+
+            z-index: 1;
+            left: -100%;
+        }
+
+        li {
+            margin: auto 5px;
+            @include mobail{
+                margin: 20px 0;
+            }
+        }
+
+        li a {
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            text-transform: uppercase;
+
+            @include mobail{
+                padding: 5px 30px;
+                color: #000;
+            }
+
+            &:hover {
+                background: #00000044;
+                box-shadow: 4px 4px 5px #0004;
+                color: #ED6353;
+            }
+
+            &.active {
+                background: #00000044;
+                color: #1C3341;
+            }
+        }
+    }
+}
+
+#logo {
+    display: inline-block;
+    padding: 5px 10px 0 0;
+    transform: scale(0.7);
+    @include mobail{
+        display: block;
+        padding: 0;
+        padding-left: 20px;
+    }
+}
+
+@include mobail{
+    nav {
+        div#nav-icon {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            width: auto;
+            height: auto;
+        
+        }
+
+        div#nav-toggle {
+            background: #000;
+            width: 40px;
+            height: 5px;
+            position: relative;
+            border-radius: 5px;
+
+            &::after,
+            &::before {
+                content: "";
+                background: #000;
+                width: 24px;
+                margin-left: 4px;
+                height: 5px;
+                position: absolute;
+                border-radius: 5px;
+
+            }
+
+            &::after {
+                width: 30px;
+                margin-left: 9px;
+                top: 8px;
+            }
+
+            &::before {
+                top: -8px;
+            }
+        }
+    }
+}

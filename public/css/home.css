@@ -1,0 +1,187 @@
+body {
+  padding: 0 15%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+body nav {
+  position: initial;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin-top: 10px;
+}
+
+body nav .padding {
+  padding: 0;
+  margin: 3px 40px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body nav .padding div#nav-icon {
+  position: absolute;
+}
+
+body nav ul {
+  background: #fff;
+  justify-self: flex-end !important;
+}
+
+body nav ul li a {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  body nav .padding {
+    display: -ms-grid;
+    display: grid;
+    width: 100%;
+    -ms-grid-columns: 1fr 40px;
+        grid-template-columns: 1fr 40px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+        grid-template-areas: "logo nav-icon";
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+body nav .padding div#nav-icon {
+  grid-area: nav-icon;
+  position: initial;
+}
+
+body nav .padding div#nav-icon #nav-toggle {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body nav #logo {
+  grid-area: logo;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  display: inline-block;
+  padding: 5px 10px 0 0;
+}
+
+body main {
+  margin-top: 0 !important;
+}
+
+section {
+  background-image: url("/img/homeback.png");
+  background-repeat: no-repeat;
+  background-size: 60vw;
+  background-position: -86% 50%;
+  display: -ms-grid;
+  display: grid;
+  height: 90vh;
+}
+
+@media (max-width: 768px) {
+  section {
+    background-image: url("/img/homemoback.svg");
+    background-size: 110%;
+    background-position: 50% 0;
+    height: 80vh;
+  }
+}
+
+section .taglines {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: right;
+  display: none;
+}
+
+section .taglines h1 {
+  margin: 30px 0;
+}
+
+section .taglines h1 span {
+  color: #2196F3;
+}
+
+section .taglines h1 .act {
+  color: #ff9800;
+}
+
+section .taglines h1:nth-child(2) {
+  margin-right: 60px;
+}
+
+section .botton {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  section .botton {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+}
+
+section .botton a {
+  font-family: "";
+  padding: 5px 25px;
+  font-size: 26px;
+  border-radius: 6px;
+  display: inline-block;
+  background: #fff;
+  text-decoration: none;
+  text-align: center;
+  color: #2196F3;
+  -webkit-box-shadow: -5px 5px 20px 1px #54545460;
+          box-shadow: -5px 5px 20px 1px #54545460;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  section .botton a {
+    width: 100%;
+    display: block;
+    margin: 10px;
+  }
+}
+
+section .botton a:hover, section .botton a:focus {
+  outline: 1px solid #ff9800;
+  color: #ff9800;
+}
+
+section .botton a#background {
+  margin-right: 20px;
+  color: #FFF;
+  background: #2196F3;
+}
+
+section .botton a#background:hover, section .botton a#background:focus {
+  background: #1970b8;
+  color: #ff9800;
+}
+/*# sourceMappingURL=home.css.map */

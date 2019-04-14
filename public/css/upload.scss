@@ -1,0 +1,113 @@
+$primari: #FF9800;
+$primari-dark: #E65100;
+$scondry: #42A5F5;
+$scondry-dark: #0D47A1;
+
+.contener {
+    margin: 0 20%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
+div.inputs {
+    padding: 20px;
+    background: #aaa;
+    box-shadow: -4px 4px 10px #0004;
+    border-radius: 5px;
+
+}
+
+input {
+    margin: 20px 0;
+    color: $primari;
+    background: #112F41;
+}
+
+input.file {
+    background: transparent;
+    color: #112F41;
+    cursor: pointer;
+    border: 1px solid #111;
+    box-shadow: -5px 5px 20px #055c5d2c;
+
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    &::before {
+        content: 'UPLOAD';
+        color: #FFF;
+        display: inline-block;
+        background: $scondry;
+        padding: 5px 8px;
+        outline: none;
+        user-select: none;
+        cursor: pointer;
+        font-weight: bold;
+
+    }
+}
+
+input.but {
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    color: #FFF;
+    background: $scondry;
+    box-shadow: -5px 5px 10px #213645;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div.uploading {
+    padding: 20px;
+    background: $scondry;
+    box-shadow: -4px 4px 10px #0004;
+    border-radius: 5px;
+    width: 400px;
+    height: 200px;
+    display: grid;
+    justify-content: center;
+    align-items: center;    
+    display: none;
+
+    div.progress{
+        width: 360px;
+        height: 20px;
+        background: $scondry-dark;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 2px 2px 5px $scondry-dark; 
+
+
+        .done{
+            --done: 40%;
+            background: $primari;
+            box-shadow: 2px 2px 5px $primari-dark; 
+
+            width: var(--done);
+            height: 20px;
+            border-radius: 10px;
+        }
+
+    }
+    .amount{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+       justify-content: space-between;
+
+        .left, .right{
+            color: #234264;
+            font-weight: bold;
+            text-align:left;
+        }
+        .right{
+            text-align: right;
+        }
+    }
+}

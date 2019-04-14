@@ -1,0 +1,108 @@
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+section#player {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    display: none;
+    .contener {
+        padding: 30px;
+        border-radius: 6px;
+        background: #aaa;
+        box-shadow: -4px 4px 10px #0004;
+    }
+
+    #cover {
+        width: 200px;
+        height: auto;
+        border-radius: 3px;
+
+    }
+
+    .songname {
+        margin: 10px 0;
+    }
+
+    input[type='range'] {
+        cursor: pointer;
+        width: 200px;
+        margin: 10px 0;
+        width: 100%;
+        appearance: none;
+        height: 4px;
+        border-radius: 4px;
+        background: #ddd;
+        position: relative;
+        --parsentis: 0%;
+        &::after {
+            content: "";
+            border-radius: 4px;
+            position: absolute;
+            left: 0;
+            width:var(--parsentis);
+            height: 4px;
+            background: #fe624b;
+        }
+
+        &:focus {
+            outline: none;
+            border: none;
+        }
+
+        &::-webkit-slider-thumb {
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: #fe624b;
+        }
+
+    }
+
+    .timer {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .control {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .controls {
+        cursor: pointer;
+        margin: 5px;
+        width: 30px;
+        height: 30px;
+        mix-blend-mode: darken;
+    }
+}
+
+section#connection {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+
+    h1{
+        text-align: center;
+        padding: 10px;
+        font-size: 30px;
+    }
+    input#idno{
+        text-align: center;
+        padding: 10px;
+        font-size: 30px;
+        display: block;
+        background: #de6b44;
+        box-shadow: inset 2px 3px 10px #403020a4;
+        color: #fff;
+        letter-spacing: 4px;
+    }
+}

@@ -1,0 +1,47 @@
+
+<style>
+    #allsee{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 95vh;
+    }
+    #contens{
+        width: 800px;
+        max-width: 100vw;
+        height: auto;
+    }
+    #video{
+        background: #777;
+        border: none;
+        outline: none;
+        width: 400px;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 5px;
+        padding: 10px ;
+    }
+    button{
+        width: 100px;
+        border: none;
+        outline: none;
+        background: #E17D27;
+        border-radius: 4px;
+        padding: 8px 12px;
+    }
+
+</style>
+<div id="allsee">
+<video id="contens" controls src=""></video>
+<br>
+<input type="text" name="" id="video" value="2.Harry Potter and the Chamber of Secrets (2002) Ult Ext Ed 720p Dual Audio BluRay - KartiKing - DMMovies.mkv">
+<br>
+<button type="submit" onclick="playvideo()">Play video</button>
+<script>
+    $("#video").focus()
+    const playvideo= ()=>{
+        $("#contens").src = "/content/" + $("#video").value
+    }
+</script>
+</div>

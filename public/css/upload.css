@@ -1,0 +1,128 @@
+.contener {
+  margin: 0 20%;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+div.inputs {
+  padding: 20px;
+  background: #aaa;
+  -webkit-box-shadow: -4px 4px 10px #0004;
+          box-shadow: -4px 4px 10px #0004;
+  border-radius: 5px;
+}
+
+input {
+  margin: 20px 0;
+  color: #FF9800;
+  background: #112F41;
+}
+
+input.file {
+  background: transparent;
+  color: #112F41;
+  cursor: pointer;
+  border: 1px solid #111;
+  -webkit-box-shadow: -5px 5px 20px #055c5d2c;
+          box-shadow: -5px 5px 20px #055c5d2c;
+}
+
+input.file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input.file::before {
+  content: 'UPLOAD';
+  color: #FFF;
+  display: inline-block;
+  background: #42A5F5;
+  padding: 5px 8px;
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input.but {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  color: #FFF;
+  background: #42A5F5;
+  -webkit-box-shadow: -5px 5px 10px #213645;
+          box-shadow: -5px 5px 10px #213645;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+div.uploading {
+  padding: 20px;
+  background: #42A5F5;
+  -webkit-box-shadow: -4px 4px 10px #0004;
+          box-shadow: -4px 4px 10px #0004;
+  border-radius: 5px;
+  width: 400px;
+  height: 200px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+
+div.uploading div.progress {
+  width: 360px;
+  height: 20px;
+  background: #0D47A1;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 2px 2px 5px #0D47A1;
+          box-shadow: 2px 2px 5px #0D47A1;
+}
+
+div.uploading div.progress .done {
+  --done: 40%;
+  background: #FF9800;
+  -webkit-box-shadow: 2px 2px 5px #E65100;
+          box-shadow: 2px 2px 5px #E65100;
+  width: var(--done);
+  height: 20px;
+  border-radius: 10px;
+}
+
+div.uploading .amount {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.uploading .amount .left, div.uploading .amount .right {
+  color: #234264;
+  font-weight: bold;
+  text-align: left;
+}
+
+div.uploading .amount .right {
+  text-align: right;
+}
+/*# sourceMappingURL=upload.css.map */

@@ -1,0 +1,56 @@
+section {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 90vh;
+}
+
+section#cn h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+
+section#cn h1#idno {
+  display: block;
+  background: #de6b44;
+  -webkit-box-shadow: inset 2px 3px 10px #403020a4;
+          box-shadow: inset 2px 3px 10px #403020a4;
+  color: #fff;
+  letter-spacing: 4px;
+}
+
+#vid {
+  display: none;
+}
+
+#aud {
+  display: none;
+}
+
+#waiting {
+  display: none;
+  background: url("/img/playbackground.svg");
+  background-position: center center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+/**
+
+    for devlopment
+*/
+#cn {
+  display: none;
+}
+
+#waiting {
+  display: -ms-grid;
+  display: grid;
+}
+/*# sourceMappingURL=player.css.map */

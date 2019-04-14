@@ -1,0 +1,153 @@
+@mixin mobail {
+    @media (max-width: 768px) {
+        @content
+    }
+}
+
+
+body{
+    // height: 100vh;
+    padding: 0 15%;
+    overflow: hidden;
+    @include mobail{
+        padding: 0;
+        overflow: visible;
+    }
+
+
+    nav{
+        position: initial;
+        box-shadow: none;
+        margin-top: 10px;
+        
+        .padding{
+            padding: 0;
+            margin: 3px 40px;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        .padding div#nav-icon{
+            position: absolute;
+        }
+    }
+    nav ul{
+        background: #fff;
+        justify-self: flex-end !important;
+    }
+    nav ul li a{
+        font-size: 16px;
+
+    }
+    nav .padding{
+        @include mobail{
+            display: grid;
+            width: 100%;
+            grid-template-columns: 1fr 40px;
+            justify-content: space-between;
+            grid-template-areas: "logo nav-icon";
+            align-items: center;
+        }
+    }
+    nav .padding div#nav-icon{
+        // display: none;
+        grid-area: nav-icon;
+        position: initial;
+
+        #nav-toggle{
+        
+            align-self: center;
+        }
+    }
+    nav #logo {
+        grid-area: logo;
+        align-self: center;
+        display: inline-block;
+        padding: 5px 10px 0 0;
+    }
+}
+body main{
+    margin-top: 0 !important;
+
+}
+section{
+    background-image: url("/img/homeback.png");
+    background-repeat: no-repeat;
+    background-size: 60vw;
+    background-position: -86% 50%;
+    display: grid;
+    height: 90vh;
+
+    @include mobail{
+        background-image: url("/img/homemoback.svg");
+        background-size: 110%;
+        background-position: 50% 0;
+        height: 80vh;
+  
+        
+    }
+
+    .taglines{
+        justify-self: right;
+        align-self: center;
+        text-align: right;
+        display: none;
+        h1{
+            margin: 30px 0;
+            span{
+                color: #2196F3;
+            }
+            .act{
+                color: #ff9800;
+            }
+
+            &:nth-child(2){
+                margin-right: 60px;
+            }
+        }
+    }
+    .botton{
+        justify-self: right;
+        align-self: center;
+        margin-bottom: 50px;
+
+        @include mobail{
+            justify-self: center;
+            align-self: flex-end;
+        }
+
+    }
+    .botton a{
+        font-family: "";
+        padding: 5px 25px;
+        font-size: 26px;
+        border-radius: 6px;
+        display: inline-block;
+        background: #fff;
+        text-decoration: none;
+        text-align: center;
+        color: #2196F3;
+        box-shadow: -5px 5px 20px 1px #54545460;
+        box-sizing: border-box;
+
+
+        @include mobail{
+            width: 100%;
+            display: block;
+            margin: 10px;
+        }
+        &:hover, &:focus{
+            outline: 1px solid #ff9800;
+            color: #ff9800;
+        }
+    }
+    .botton a#background{
+        margin-right: 20px;
+        color: #FFF;
+        background: #2196F3;
+        &:hover, &:focus{
+            background: rgb(25, 112, 184);
+
+            color: #ff9800;
+        }
+    }
+}

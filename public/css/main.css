@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+/*# sourceMappingURL=main.css.map */

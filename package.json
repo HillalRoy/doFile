@@ -1,0 +1,31 @@
+{
+  "name": "testnode",
+  "version": "1.0.0",
+  "description": "any things to test",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "server": "nodemon app.js",
+    "lint": "eslint .",
+    "lintfix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HillalRoy/pcontent.git"
+  },
+  "author": "Hillal Kumar Roy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HillalRoy/pcontent/issues"
+  },
+  "homepage": "https://github.com/HillalRoy/pcontent#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.1",
+    "express-handlebars": "^3.0.0",
+    "jsmediatags": "^3.8.1",
+    "sharp": "^0.22.0",
+    "socket.io": "^2.2.0"
+  }
+}

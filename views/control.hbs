@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/control.css">
+<section id="connection">
+    <div>
+        <h1>Enter player ID:</h1>
+        <input type="number" id="idno">
+    </div>
+
+</section>
+<section id="player">
+    <div class="contener">
+        <img id="cover" src="" alt="">
+
+        <div class="songname"></div>
+
+        <input type="range" min="0" value="0" name="" id="timer">
+        <div class="timer">
+            <p class="currenttime">00:00</p>
+            <p class="endtime">00:00</p>
+        </div>
+        <div class="control">
+            <img class="controls pvr" src="/img/pvr.jpg" alt="">
+            <img class="controls left" src="/img/left.jpg" alt="">
+            <img class="controls play" src="/img/play.jpg" alt="">
+            <img class="controls right" src="/img/right.jpg" alt="">
+            <img class="controls next" src="/img/next.jpg" alt="">
+        </div>
+    </div>
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/script/control.js"></script>
