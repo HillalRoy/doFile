@@ -1,7 +1,7 @@
 {
-  "name": "testnode",
-  "version": "1.0.0",
-  "description": "any things to test",
+  "name": "dofile",
+  "version": "0.1.0",
+  "description": "Just injoy whate and How you want",
   "main": "app.js",
   "scripts": {
     "start": "node app",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HillalRoy/pcontent.git"
+    "url": "git+https://github.com/HillalRoy/doFile.git"
   },
   "author": "Hillal Kumar Roy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HillalRoy/pcontent/issues"
+    "url": "https://github.com/HillalRoy/doFile/issues"
   },
-  "homepage": "https://github.com/HillalRoy/pcontent#readme",
+  "homepage": "https://github.com/HillalRoy/doFile#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
