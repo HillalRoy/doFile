@@ -36,7 +36,7 @@ else if (platform === 'mobail')
     prePath = '/storage/emulated/0/';
 
 else if (platform === 'linux')
-    prePath = '/media/doking/3A9EBED39EBE8743/';
+    prePath = '/home/media/';
 
 app.use(express.static(prePath))
 
@@ -136,8 +136,8 @@ function sendCover(req, res) {
                 if (tag.tags.picture.data) {
                     let ArrPicdata = tag.tags.picture.data
                     let buf = Buffer.from(ArrPicdata);
+                    json = { buf, format: tag.tags.picture.format }
                 }
-            json = { buf, format: tag.tags.picture.format }
             
             res.json(json)
     },

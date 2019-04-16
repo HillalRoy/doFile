@@ -3,24 +3,30 @@
         @content
     }
 }
-.padding {
-    padding: 0 70px;
-    display: flex;
-
-    @include mobail{
-        padding: 10px;
-    }
-}
 
 nav {
     position: fixed;
     background: #fff;
     box-shadow: 0 5px 10px #3334;
-
+    
     width: 100%;
     top: 0;
     left: 0;
     z-index: 99;
+
+
+    .padding {
+        padding: 0 70px;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: auto 1fr;
+
+        @include mobail{
+            padding: 10px;
+        }
+        #nav-icon{ display: none; }
+
+    }
 
     @include mobail{
         display: flex;
@@ -30,6 +36,7 @@ nav {
     ul {
         list-style: none;
         display: flex;
+        justify-self: flex-end;
 
         @include mobail{
             display: block;
@@ -37,7 +44,6 @@ nav {
             background: #fff;
             height: 100vh;
             top: 0;
-
             z-index: 1;
             left: -100%;
         }
@@ -50,27 +56,44 @@ nav {
         }
 
         li a {
-            font-size: 1.2em;
+
+            font-size: 16px;
             text-decoration: none;
             color: #000;
             display: block;
             padding: 5px 10px;
             text-transform: uppercase;
-
+            position: relative;
             @include mobail{
                 padding: 5px 30px;
                 color: #000;
             }
 
-            &:hover {
-                background: #00000044;
-                box-shadow: 4px 4px 5px #0004;
+            &:hover , &:focus{
+                &::after{
+                    content: "";
+                    display: block;
+                    height: 4px;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: #00a0ff;                   
+                }
+                outline: none;
+                box-shadow: 1px 4px 5px #0006;
                 color: #ED6353;
+            }
+            &::after{
+                content: "";
+                height: 0px;
+                transition: height 0.2s;
+                transform-origin: top;
             }
 
             &.active {
-                background: #00000044;
-                color: #1C3341;
+                box-shadow: 0 -4px 5px #0006;
+                color: #ED6353;
             }
         }
     }
@@ -80,6 +103,8 @@ nav {
     display: inline-block;
     padding: 5px 10px 0 0;
     transform: scale(0.7);
+    justify-self: flex-start;
+
     @include mobail{
         display: block;
         padding: 0;

@@ -32,6 +32,7 @@ const dataloadImg = async (el, name) => {
         const jsonBuf = await res.json();
         const bolb = new Blob([new Uint8Array(jsonBuf.buf.data)], { type: jsonBuf.format });
         const url = URL.createObjectURL(bolb);
+        el.parentNode.style.background = "none";
         return el.src = url;
 
     } catch (err) { }
@@ -102,7 +103,7 @@ function addFile(type, name, t) {
         const path = `/file/imgthamp${current.join("/")}/` + name;
         a.innerHTML = ` <div class="icon"><img src="${path}"></div>`
     } else {
-        a.innerHTML = ` <div class="icon"><img></div>`
+        a.innerHTML = ` <div class="icon"></div>`
     }
 
 

@@ -34,11 +34,10 @@ body{
         background: #fff;
         justify-self: flex-end !important;
     }
-    nav ul li a{
-        font-size: 16px;
 
-    }
     nav .padding{
+        margin-left: 0;
+        margin-right: 0;
         @include mobail{
             display: grid;
             width: 100%;
@@ -49,9 +48,9 @@ body{
         }
     }
     nav .padding div#nav-icon{
-        // display: none;
         grid-area: nav-icon;
         position: initial;
+
 
         #nav-toggle{
         
@@ -59,10 +58,11 @@ body{
         }
     }
     nav #logo {
-        grid-area: logo;
+        padding: 0;
+        margin: 0;
+        justify-self: left;
         align-self: center;
         display: inline-block;
-        padding: 5px 10px 0 0;
     }
 }
 body main{

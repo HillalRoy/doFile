@@ -1,5 +1,4 @@
 const router = require("express").Router()
-
 // Home page
 router.get("/", (_, res) => res.render("home", {title: "Home"}))
 // router.get("/", (_, res) => res.render("allfiles", {title: "Routs"}))
@@ -23,7 +22,7 @@ router.get("/explor", (_, res) => res.render("allfiles", {title: "explor"}))
 router.get("/explor/*", (_, res) => res.render("allfiles", {title: "explor"}))
 
 
-router.get("/player", (_, res) => res.render("player", {title: "Payer"}))
+router.get("/player", (_, res) => res.render("player", {title: "player"}))
 router.get("/control", (_, res) => res.render("control", {title: "Control"}))
 
 module.exports = router

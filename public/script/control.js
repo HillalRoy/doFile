@@ -1,5 +1,5 @@
-let i = 0
-let sendData
+let i = 0, sendData, gp;
+
 const songCTime = (ct) => {
     const cm = Math.floor(ct / 60)
     const cs = Math.floor(ct % 60)
@@ -130,6 +130,8 @@ const controlMedia = (socket)=>{
 
 
 const id = Math.round(Math.random() * Math.pow(10, 10))
+
+
 window.onload = () => {
  
     const socket = io()
@@ -137,15 +139,17 @@ window.onload = () => {
         lid: id,
         type: "controlar"
     })
-    $("input[type='range']").onchange = songTime
+    $("input[type='range']").onchange = songTime;
     animate()
 
 
     function connectPlayer() {
-        if ($("#idno").value.length === 10) {
+
+        gp = `room${this.value}`;
+        if (this.value.length === 10) {
             socket.emit("connectplayer", {
                 lid: id,
-                playerid: Number($("#idno").value)
+                playerid: Number(this.value)
             })
         }else{
             // Error Handelar
@@ -157,9 +161,34 @@ window.onload = () => {
     socket.on("newconnection", (msg)=>{
         console.log(msg);
         $("#connection").style.display = "none";
-        $("#player").style.display = "grid";
+        $("#test").style.display = "grid";
         sendData = new MadiaControl(socket,msg.player)
         controlMedia(socket)
-    })
+    });
+
+    // test services
+
+    (function(){
+        $("#test #type").onclick = function(){
+            socket.emit("update", {type: "type", gp})
+        }
+        $("#test #track").onclick = function(){
+            socket.emit("update", {type: "track", gp})
+            
+        }
+        $("#test #time").onclick = function(){
+            socket.emit("update", {type: "time", gp})
+            
+        }
+        $("#test #vol").onclick = function(){
+            socket.emit("update", {type: "vol", gp})
+            
+        }
+
+
+
+    }())
+
+
 
 }

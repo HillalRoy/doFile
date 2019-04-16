@@ -375,6 +375,7 @@
 
 #music-player img {
   width: 100%;
+  min-height: 100%;
 }
 
 div#E404 {
