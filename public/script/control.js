@@ -1,129 +1,23 @@
-let i = 0, sendData, gp;
-
-const songCTime = (ct) => {
-    const cm = Math.floor(ct / 60)
-    const cs = Math.floor(ct % 60)
-    return `${cm < 10 ? "0"+cm : cm }:${cs< 10 ? "0"+cs : cs}`
-}
-const getPersent = () => {
-    return ($("#timer").value / song.duration) * 100
-}
-const animate = () => {
-    if (song) {
-        $(".currenttime").innerText = songCTime(song.currentTime)
-        $(".endtime").innerText = songCTime(song.duration)
-        $("#timer").max = song.duration
-        $("#timer").style.setProperty("--parsentis", getPersent() + "%")
-        $("#timer").value = song.currentTime
-        if (!!song.ended) {
-            i++
-            songChange()
-        }
-    }
-}
-
-let animateL
-const songTime = () => {
-    clearInterval(animateL)
-    $("#timer").style.setProperty("--parsentis", getPersent() + "%")
-    song.currentTime = $("#timer").value
-    animateL = setInterval(animate, 1000 / 5)
-}
-
-const palySong = () => {
-    if (song) {
-        if (!song.paused) {
-            $(".play").src = "/img/play.jpg"
-            song.pause()
-        } else {
-            song.src = "/content/" + songs[i % songs.length]
-            getmusicdata(songs[i % songs.length])
-            $(".play").src = "/img/pause.jpg"
-            song.play()
-        }
-    }
-}
-
-const songChange = () => {
-    if (song) {
-        song.src = "/content/" + songs[i % songs.length]
-        imgLoad(songs[i % songs.length])
-        getmusicdata(songs[i % songs.length])
-        $(".play").src = "/img/pause.jpg"
-        song.play()
-    }
-}
-
-$(".next").onclick = () => {
-    i++
-    songChange()
-}
-$(".pvr").onclick = () => {
-    i--
-    songChange()
-}
-$(".play").onclick = palySong
-
-const imgLoad = async (link) => {
-    const data = await fetch("/api/img/" + link).then(dat => dat.json())
-    const b64encoded = btoa(String.fromCharCode.apply(null, await data.data))
-    $("#cover").src = 'data:image/jpeg;base64,' + await b64encoded
-}
-
-const getmusicdata = async (song) => {
-
-    const data = await fetch("/api/mdata/" + song).then(dat => dat.json())
-    if (data.info.errno) return
-    const name = async () => {
-        if (await data.title.length > 20)
-            return data.title.substring(0, 20) + "..."
-        return data.title
-    }
-    $(".songname").innerText = await name()
-
-}
-
-let song = new Audio(),
-    songs
-const music = (list) => {
-    if (list.length === 0) {
-        $(".songname").innerText = "No song ableble"
-        song = undefined
-        clearInterval(animateL)
-        return
-    }
-    songs = list
-    const img = $("#cover")
-    imgLoad(list[0], img)
-    getmusicdata(list[2])
-    animateL = setInterval(animate, 1000 / 5)
-
-}
-
-listdiv = $(".file")
-fetch("/api/getfiles")
-    .then(data => data.json())
-    .then(data => music(data.musics))
-
-
-class MadiaControl{
-    constructor(socket,connectWith){
+let socket;
+let gp;
+class MadiaControl {
+    constructor(socket, connectWith) {
         this.socket = socket
         this.connectWith = connectWith
     }
-    send(channel, msg){
+    send(channel, msg) {
         msg.to = this.connectWith
         this.socket.emit(channel, msg)
     }
 }
 
-const controlMedia = (socket)=>{
-    socket.on("change", msg=>{
+const controlMedia = (socket) => {
+    socket.on("change", msg => {
 
-        sendData.send("ok", {status: "ok"})
+        sendData.send("ok", { status: "ok" })
     })
-    socket.on("nochange", msg=>{
-        sendData.send("ok", {status: "ok"})
+    socket.on("nochange", msg => {
+        sendData.send("ok", { status: "ok" })
     })
 }
 
@@ -133,15 +27,16 @@ const id = Math.round(Math.random() * Math.pow(10, 10))
 
 
 window.onload = () => {
- 
-    const socket = io()
+    setup();
+    socket = io()
     socket.emit("control", {
         lid: id,
         type: "controlar"
     })
-    $("input[type='range']").onchange = songTime;
-    animate()
 
+    $("main").classList.add("connecting");
+    $("#main").classList.add("hide");
+    $("#music-player").classList.add("hide");
 
     function connectPlayer() {
 
@@ -151,44 +46,184 @@ window.onload = () => {
                 lid: id,
                 playerid: Number(this.value)
             })
-        }else{
+        } else {
             // Error Handelar
             console.log("err")
         }
     }
     $("#idno").onchange = connectPlayer;
 
-    socket.on("newconnection", (msg)=>{
+    socket.on("oncanplay", msg=> {
+        updatePlayer(msg.url)
+        console.log(msg)    
+    })
+    // socket.on("ontimeupdate", msg=>{
+        
+
+
+    // })
+
+    socket.on("newconnection", (msg) => {
         console.log(msg);
-        $("#connection").style.display = "none";
-        $("#test").style.display = "grid";
-        sendData = new MadiaControl(socket,msg.player)
+        sendData = new MadiaControl(socket, msg.player)
         controlMedia(socket)
+
+        $("#connection").classList.add("hide");
+        $("main").classList.remove("connecting");
+        $("#main").classList.remove("hide");
+        $("#music-player").classList.remove("hide");
+
+        $("#music-player-replasement").style.height = `${$("#music-player").getBoundingClientRect().height}px`;
+        $("#music-player-replasement").style.width = `${$("#music-player").getBoundingClientRect().width}px`;
     });
 
-    // test services
-
-    (function(){
-        $("#test #type").onclick = function(){
-            socket.emit("update", {type: "type", gp})
-        }
-        $("#test #track").onclick = function(){
-            socket.emit("update", {type: "track", gp})
-            
-        }
-        $("#test #time").onclick = function(){
-            socket.emit("update", {type: "time", gp})
-            
-        }
-        $("#test #vol").onclick = function(){
-            socket.emit("update", {type: "vol", gp})
-            
-        }
-
-
-
-    }())
 
 
 
 }
+
+function openLink(name, type) {
+    switch (type) {
+        case 'folder':
+            dataFetch(`${name}`);
+            break;
+
+
+        case 'musics':
+            playSong(`${name}`);
+            break;
+
+        case 'videos':
+            playVideo(`${name}`);
+            break;
+
+
+        case 'photos':
+            openImage(`${name}`);
+            break;
+
+
+        case 'other':
+            alert(`File not soport`);
+            break;
+    }
+}
+
+
+function playSong(name) {
+    console.log("sending", {
+        name: `${current.join("/")}/${name}`
+    })
+    socket.emit("update", {
+        type: "type",
+        gp,
+        newtype: "audio",
+        url: `${current.join("/")}/${name}`
+    })
+
+}
+
+
+function openImage(name) {
+
+}
+
+
+function playVideo(name) {
+
+}
+
+function updatePlayer(url) {
+    const player = document.querySelector("#music-player");
+    const title = player.querySelector("#title");
+    const artist = player.querySelector("#artist");
+    const cover = player.querySelector("#cover img");
+    const crrentTime = player.querySelector("#left");
+    const endTime = player.querySelector("#right");
+    const timer = player.querySelector("#range");
+    const previous = player.querySelector("#pvr");
+    const playPause = player.querySelector("#playpus");
+    const next = player.querySelector("#nex");
+    let isElUsing = false;
+    
+    
+
+    const songCTime = ct => {
+      const cm = Math.floor(ct / 60);
+      const cs = Math.floor(ct % 60);
+      return `${cm < 10 ? "0" + cm : cm}:${cs < 10 ? "0" + cs : cs}`;
+    };
+  
+    (function getMetaData(url, Title, Artist, Cover) {
+      const fetchData = async () => {
+        const json = { path: url };
+  
+        const option = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(json)
+        };
+  
+        const data = await fetch(`/file/musicdata`, option);
+        const jsonData = await data.json();
+  
+        return jsonData;
+      };
+  
+      fetchData()
+        .then(data => {
+          const { title, artist } = data;
+          Title.innerText =
+            title.length > 25 ? title.substring(0, 23) + "..." : title;
+          Artist.innerText =
+            artist.length > 18 ? artist.substring(0, 16) + "..." : artist;
+        })
+        .catch(err => console.log(err));
+  
+      dataloadImg(Cover, /[^/]*$/.exec(url));
+    })(url, title, artist, cover);
+  
+    function songTimeLine(el) {
+      function getPersent() {
+        return (el.value / song.duration()) * 100;
+      }
+  
+      if (!isElUsing) el.value = song.currentTime();
+  
+      el.style.setProperty("--parsentis", getPersent() + "%");
+    }
+  
+    function update() {
+    //   crrentTime.innerText = songCTime(song.currentTime());
+      songTimeLine(timer);
+    }
+  
+    // song.oncanplay = () => {
+    //   endTime.innerText = songCTime(song.duration());
+    //   song.playPause();
+    //   timer.max = song.duration();
+    //   document.title = song.songList[song.pos];
+    //   song.interval = setInterval(update, 500);
+    // };
+  
+    (function() {
+    //   timer.onchange = () => song.setCurrentTime(timer.value);
+  
+      timer.onmouseup = () => (isElUsing = false);
+      timer.ontouchstart = () => (isElUsing = true);
+      timer.ontouchend = () => (isElUsing = false);
+      timer.onmousedown = () => (isElUsing = true);
+  
+      timer.onclick = () => {
+        isElUsing = true;
+        setTimeout(() => (isElUsing = false), 8000);
+      };
+    })();
+  
+    // playPause.onclick = () => song.playPause();
+    // next.onclick = () => song.next();
+    // previous.onclick = () => song.prevers();
+  }
+  

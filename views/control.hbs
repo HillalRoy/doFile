@@ -7,32 +7,45 @@
 
 </section>
 
-<section id="test">
-    <button id="type" > Type   </button>
-    <button id="track"> Track  </button>
-    <button id="time" > Time   </button>
-    <button id="vol"  > Volume </button>
+<script src="/script/musicplayer.js"></script>
+<script src="/script/allfiles.js"></script>
+<link rel="stylesheet" href="/css/allfiles.css">
+<section id="main">
+    <div class="link">Internal</div>
+    <div class="contenar">
+        <div id="files" class="files">
 
-</section>
-<section id="player">
-    <div class="contener">
-        <img id="cover" src="" alt="">
-
-        <div class="songname"></div>
-
-        <input type="range" min="0" value="0" name="" id="timer">
-        <div class="timer">
-            <p class="currenttime">00:00</p>
-            <p class="endtime">00:00</p>
-        </div>
-        <div class="control">
-            <img class="controls pvr" src="/img/pvr.jpg" alt="">
-            <img class="controls left" src="/img/left.jpg" alt="">
-            <img class="controls play" src="/img/play.jpg" alt="">
-            <img class="controls right" src="/img/right.jpg" alt="">
-            <img class="controls next" src="/img/next.jpg" alt="">
         </div>
     </div>
+    <div class="imgview">
+        <div class="load"></div>
+        <a href="#close_icon" class="closebtn" onclick="closeImg()">
+            <div class="close"></div>
+        </a>
+    </div>
 </section>
+<section id="music-player-replasement">
+</section>
+<section id="music-player">
+    <div id="title">Play a song</div>
+    <div id="artist">--</div>
+    <div id="cover"><img src="/img/disk.svg" alt="" srcset=""></div>
+    <div id="timer">
+        <div id="left">00:00</div>
+        <div id="right">00:00</div>
+    </div>
+    <div id="timeline"><input id="range" type="range" min="0" value="0"></div>
+    <div id="buttons">
+        <a href="#pvr" id="pvr"><img src="/img/pvr.jpg" alt="" srcset=""> </a>
+        <a href="#playpause" id="playpus"><img src="/img/pause.jpg" alt="" srcset=""></a>
+        <a href="#next" id="nex"><img src="/img/next.jpg" alt="" srcset=""></a>
+    </div>
+</section>
+<div id="E404">
+    You lost
+</div>
+
+
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="/script/control.js"></script>

@@ -1,7 +1,6 @@
 const router = require("express").Router()
 // Home page
 router.get("/", (_, res) => res.render("home", {title: "Home"}))
-// router.get("/", (_, res) => res.render("allfiles", {title: "Routs"}))
 
 // Upload
 router.get("/upload", (_, res) => res.render("upload", {title: "Upload"}))

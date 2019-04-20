@@ -61,9 +61,16 @@ main{
         margin-bottom: 20px;
     }
     .files{
+
         display: flex;
         flex-wrap: wrap;
-        justify-content: baseline;
+        justify-content: space-between;
+
+        &::after{
+            content: "";
+
+            flex: auto;
+        }
 
         a{
             margin: 5px;

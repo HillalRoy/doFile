@@ -92,7 +92,7 @@ nav ul li a:hover, nav ul li a:focus {
   outline: none;
   -webkit-box-shadow: 1px 4px 5px #0006;
           box-shadow: 1px 4px 5px #0006;
-  color: #ED6353;
+  color: #ed6353;
 }
 
 nav ul li a:hover::after, nav ul li a:focus::after {
@@ -118,7 +118,7 @@ nav ul li a::after {
 nav ul li a.active {
   -webkit-box-shadow: 0 -4px 5px #0006;
           box-shadow: 0 -4px 5px #0006;
-  color: #ED6353;
+  color: #ed6353;
 }
 
 #logo {
@@ -138,7 +138,7 @@ nav ul li a.active {
 }
 
 @media (max-width: 768px) {
-  nav div#nav-icon {
+  nav .padding div#nav-icon {
     display: -ms-grid;
     display: grid;
     -webkit-box-pack: center;
@@ -149,14 +149,14 @@ nav ul li a.active {
     width: auto;
     height: auto;
   }
-  nav div#nav-toggle {
+  nav .padding div#nav-toggle {
     background: #000;
     width: 40px;
     height: 5px;
     position: relative;
     border-radius: 5px;
   }
-  nav div#nav-toggle::after, nav div#nav-toggle::before {
+  nav .padding div#nav-toggle::after, nav .padding div#nav-toggle::before {
     content: "";
     background: #000;
     width: 24px;
@@ -165,12 +165,12 @@ nav ul li a.active {
     position: absolute;
     border-radius: 5px;
   }
-  nav div#nav-toggle::after {
+  nav .padding div#nav-toggle::after {
     width: 30px;
     margin-left: 9px;
     top: 8px;
   }
-  nav div#nav-toggle::before {
+  nav .padding div#nav-toggle::before {
     top: -8px;
   }
 }

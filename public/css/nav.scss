@@ -1,156 +1,154 @@
 @mixin mobail {
-    @media (max-width: 768px) {
-        @content
-    }
+  @media (max-width: 768px) {
+    @content;
+  }
 }
 
 nav {
-    position: fixed;
-    background: #fff;
-    box-shadow: 0 5px 10px #3334;
-    
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
+  position: fixed;
+  background: #fff;
+  box-shadow: 0 5px 10px #3334;
 
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
 
-    .padding {
-        padding: 0 70px;
-        display: grid;
-        justify-content: space-between;
-        grid-template-columns: auto 1fr;
+  .padding {
+    padding: 0 70px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto 1fr;
 
-        @include mobail{
-            padding: 10px;
-        }
-        #nav-icon{ display: none; }
+    @include mobail {
+      padding: 10px;
+    }
+    #nav-icon {
+      display: none;
+    }
+  }
 
+  @include mobail {
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-self: flex-end;
+
+    @include mobail {
+      display: block;
+      position: absolute;
+      background: #fff;
+      height: 100vh;
+      top: 0;
+      z-index: 1;
+      left: -100%;
     }
 
-    @include mobail{
-        display: flex;
-        align-items: center;
+    li {
+      margin: auto 5px;
+      @include mobail {
+        margin: 20px 0;
+      }
     }
 
-    ul {
-        list-style: none;
-        display: flex;
-        justify-self: flex-end;
+    li a {
+      font-size: 16px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      position: relative;
+      @include mobail {
+        padding: 5px 30px;
+        color: #000;
+      }
 
-        @include mobail{
-            display: block;
-            position: absolute;
-            background: #fff;
-            height: 100vh;
-            top: 0;
-            z-index: 1;
-            left: -100%;
+      &:hover,
+      &:focus {
+        &::after {
+          content: "";
+          display: block;
+          height: 4px;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: #00a0ff;
         }
+        outline: none;
+        box-shadow: 1px 4px 5px #0006;
+        color: #ed6353;
+      }
+      &::after {
+        content: "";
+        height: 0px;
+        transition: height 0.2s;
+        transform-origin: top;
+      }
 
-        li {
-            margin: auto 5px;
-            @include mobail{
-                margin: 20px 0;
-            }
-        }
-
-        li a {
-
-            font-size: 16px;
-            text-decoration: none;
-            color: #000;
-            display: block;
-            padding: 5px 10px;
-            text-transform: uppercase;
-            position: relative;
-            @include mobail{
-                padding: 5px 30px;
-                color: #000;
-            }
-
-            &:hover , &:focus{
-                &::after{
-                    content: "";
-                    display: block;
-                    height: 4px;
-                    width: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: #00a0ff;                   
-                }
-                outline: none;
-                box-shadow: 1px 4px 5px #0006;
-                color: #ED6353;
-            }
-            &::after{
-                content: "";
-                height: 0px;
-                transition: height 0.2s;
-                transform-origin: top;
-            }
-
-            &.active {
-                box-shadow: 0 -4px 5px #0006;
-                color: #ED6353;
-            }
-        }
+      &.active {
+        box-shadow: 0 -4px 5px #0006;
+        color: #ed6353;
+      }
     }
+  }
 }
 
 #logo {
-    display: inline-block;
-    padding: 5px 10px 0 0;
-    transform: scale(0.7);
-    justify-self: flex-start;
+  display: inline-block;
+  padding: 5px 10px 0 0;
+  transform: scale(0.7);
+  justify-self: flex-start;
 
-    @include mobail{
-        display: block;
-        padding: 0;
-        padding-left: 20px;
-    }
+  @include mobail {
+    display: block;
+    padding: 0;
+    padding-left: 20px;
+  }
 }
 
-@include mobail{
-    nav {
-        div#nav-icon {
-            display: grid;
-            justify-content: center;
-            align-content: center;
-            width: auto;
-            height: auto;
-        
-        }
-
-        div#nav-toggle {
-            background: #000;
-            width: 40px;
-            height: 5px;
-            position: relative;
-            border-radius: 5px;
-
-            &::after,
-            &::before {
-                content: "";
-                background: #000;
-                width: 24px;
-                margin-left: 4px;
-                height: 5px;
-                position: absolute;
-                border-radius: 5px;
-
-            }
-
-            &::after {
-                width: 30px;
-                margin-left: 9px;
-                top: 8px;
-            }
-
-            &::before {
-                top: -8px;
-            }
-        }
+@include mobail {
+  nav .padding {
+    div#nav-icon {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      width: auto;
+      height: auto;
     }
+
+    div#nav-toggle {
+      background: #000;
+      width: 40px;
+      height: 5px;
+      position: relative;
+      border-radius: 5px;
+
+      &::after,
+      &::before {
+        content: "";
+        background: #000;
+        width: 24px;
+        margin-left: 4px;
+        height: 5px;
+        position: absolute;
+        border-radius: 5px;
+      }
+
+      &::after {
+        width: 30px;
+        margin-left: 9px;
+        top: 8px;
+      }
+
+      &::before {
+        top: -8px;
+      }
+    }
+  }
 }

@@ -2,27 +2,31 @@ section {
     display: grid;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 78vh;
     &#cn{
-        h1{
+        h1, #idno{
             text-align: center;
             padding: 10px;
             font-size: 30px;
         }
-        h1#idno{
+        #idno{
+            resize: none;
+            width: auto;
+            height: 56.5px;
             display: block;
             background: #de6b44;
             box-shadow: inset 2px 3px 10px #403020a4;
             color: #fff;
             letter-spacing: 4px;
+            // user-select: text;
+
+            &::selection{
+            // background: #de6b44;
+            color: #999;
+
+            }
         }
     }
-}
-#vid{
-    display: none;
-}
-#aud{
-    display: none;
 }
 #waiting{
     display: none;
@@ -32,18 +36,11 @@ section {
     background-repeat: no-repeat;
 }
 
-
-
-
-/**
-
-    for devlopment
-*/
-
-// #cn{
-//     display: none;
-// }
-
-// #waiting{
-//     display: grid;
-// }
+#player{
+    display: none;
+    video{
+        display: none;
+        width: 90%;
+        height: auto;
+    }
+}

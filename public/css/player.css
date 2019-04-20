@@ -7,16 +7,19 @@ section {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 90vh;
+  height: 78vh;
 }
 
-section#cn h1 {
+section#cn h1, section#cn #idno {
   text-align: center;
   padding: 10px;
   font-size: 30px;
 }
 
-section#cn h1#idno {
+section#cn #idno {
+  resize: none;
+  width: auto;
+  height: 56.5px;
   display: block;
   background: #de6b44;
   -webkit-box-shadow: inset 2px 3px 10px #403020a4;
@@ -25,12 +28,12 @@ section#cn h1#idno {
   letter-spacing: 4px;
 }
 
-#vid {
-  display: none;
+section#cn #idno::-moz-selection {
+  color: #999;
 }
 
-#aud {
-  display: none;
+section#cn #idno::selection {
+  color: #999;
 }
 
 #waiting {
@@ -41,8 +44,13 @@ section#cn h1#idno {
   background-repeat: no-repeat;
 }
 
-/**
+#player {
+  display: none;
+}
 
-    for devlopment
-*/
+#player video {
+  display: none;
+  width: 90%;
+  height: auto;
+}
 /*# sourceMappingURL=player.css.map */

@@ -19,6 +19,15 @@ function connection(user) {
         io.to(msg.gp).emit("update", msg);
     })
 
+    user.on("ontimeupdate", msg => {
+        io.to(msg.gp).emit("update", msg);
+    })
+
+    user.on("oncanplay", msg => {
+        io.to(msg.gp).emit("oncanplay", msg);
+    })
+    
+
     user.on('disconnect', () => {
         delete users[user.id];
     });

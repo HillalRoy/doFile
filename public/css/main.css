@@ -4,8 +4,6 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

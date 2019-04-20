@@ -104,20 +104,26 @@ function sendMusicData(req, res) {
     if (path) {
         let fullPath = `${prePath}${path}`;
         fullPath = fullPath.replace(/\/\//g, '/');
+        let json = {
+            album: "",
+            artist: "",
+            title: ""
+        };
         mediatag.read(fullPath, {
             onSuccess: tag => {
-                const data = {
+                json = {
                     album: tag.tags.album,
                     artist: tag.tags.artist,
                     title: tag.tags.title
                 }
-                res.json(data)
             },
             onError: err => res.json({
                 "type": err.type,
                 "info": err.info
             })
         });
+        res.json(json)
+
     } else res.json({ type: 404, info: "req ont valid" })
 }
 
